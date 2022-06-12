@@ -29,8 +29,8 @@ jobs:
       - name: OSS License Check 
         run: bash ./files/licenseCheck.sh
 
-      - name: Apply security policies (Policy-as-Code) for evilpetclinic
-        run: bash ./files/addPolicies.sh
+      #- name: Apply security policies (Policy-as-Code) for evilpetclinic
+      #  run: bash ./files/addPolicies.sh
       
       - name: Scan Image for vulnerabilities
         run: bash ./files/scanImage.sh
