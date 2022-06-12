@@ -65,7 +65,7 @@ jobs:
         env:
           PRISMA_API_URL: https://api2.eu.prismacloud.io
         with:
-          directory: ./
+          #directory: ./
           soft_fail: true # optional: do not return an error code if there are failed checks
           api-key: ${{ secrets.BC_API_KEY }}
           framework: all # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
