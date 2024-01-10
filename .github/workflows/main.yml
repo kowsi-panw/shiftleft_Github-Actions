@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Run Prisma Cloud steps 
     env:
-          TL_USER: ${{ secrets.TL_USER }}
-          TL_PASS: ${{ secrets.TL_PASS }}
-          TL_CONSOLE: ${{ secrets.TL_CONSOLE }} 
+          TL_USER: ${{ secrets.PRISMA_ACCESS_KEY }}
+          TL_PASS: ${{ secrets.PRISMA_SECRET_KEY }}
+          TL_CONSOLE: ${{ secrets.PCC_CONSOLE_URL }} 
           BYPASS_REPOSCAN: 1
           BYPASS_OSS_LICENSE: 1
           BYPASS_IMAGESCAN: 1
@@ -21,7 +21,7 @@ jobs:
       #- name: Check image Git dependencies has no vulnerabilities.
       #  run: bash ./files/checkGit.sh
       - name: twistcli download
-        run: curl -s -k -u $TL_USER:$TL_PASS "https://$TL_CONSOLE/api/v1/util/twistcli" -v -o twistcli;chmod +x twistcli
+        run: curl -s -k -u $PRISMA_ACCESS_KEY:$PRISMA_SECRET_KEY "PCC_CONSOLE_URL" -v -o twistcli;chmod +x twistcli
 
       - name: Repo Vulnerability scan 
         run: bash ./files/repoScan.sh

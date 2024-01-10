@@ -8,14 +8,14 @@ node {
 
     //initial setup
     stage('Initial setup') {
-        withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
+        withCredentials([usernamePassword(credentialsId: 'PCC_CONSOLE_URL', passwordVariable: 'PRISMA_SECRET_KEY', usernameVariable: 'PRISMA_ACCESS_KEY')]) {
             sh('chmod +x prep/setup.sh && ./prep/setup.sh')
         }     
     }
 
     //policy creation
     stage('Apply initial policies') {
-        withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
+        withCredentials([usernamePassword(credentialsId: 'PCC_CONSOLE_URL', passwordVariable: 'PRISMA_SECRET_KEY', usernameVariable: 'PRISMA_ACCESS_KEY')]) {
             sh('chmod +x prep/extra_policies.sh && ./prep/extra_policies.sh')
         }
     }
